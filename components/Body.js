@@ -26,7 +26,7 @@ const Body = () => {
   }
 
   const isOnline = useOnline();
-  if(!isOnline){
+  if (!isOnline) {
     return <h1>Please check your internet connection</h1>
   }
   // conditional Rendring
@@ -35,10 +35,10 @@ const Body = () => {
     <ShimmerUi />
   ) : (
     <>
-      <div className="search-container">
+      <div className="p-5 bg-pink-50 my-5">
         <input
           type="text"
-          className="search-input"
+          className="focus:bg-green-50 p-2 m-2"
           placeholder="search"
           value={searchText}
           onChange={(e) => {
@@ -46,7 +46,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+          className="p-2 m-2 bg-purple-900 hover:bg-gray-500 text-white rounded-md"
           onClick={() => {
             // need to filter data
             const data = filteredData(searchText, allRestaurent);
@@ -56,7 +56,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurent-list">
+      <div className="flex flex-wrap">
         {filteredRestaurants.length === 0 ? (
           <h1>No Restaurent match your filter!</h1>
         ) : (

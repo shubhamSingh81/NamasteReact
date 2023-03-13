@@ -69,3 +69,29 @@ Parcel does Tree Shaking -> Removing unwanted code
 
 // class based Component
 
+
+// Cs Things : 
+-> Normal Native Css
+-> SCSS
+-> inlise css
+-> component Libraries : Materail Ui , Base Ui, Ant , Chakra UI -> these all are nothing but its a packages.
+-> styled Component
+
+// Going to learn Tailwind CSS Frameworks
+ - Css on the go(in the same file)
+ - reusability
+ - less bundle size
+ - flexible ui (customization)
+ - 
+
+ pros of tailwind -> easy to debug
+                   - code is less 
+                   - faster development time
+                   - it's giving a lot more control
+
+cons of tailwind -> so much classname
+                   - there is a high learning curve
+                   - 
+
+
+
