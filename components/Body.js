@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import { restaurentList } from "../src/config";
 import RestaurentCard from "./RestaurentCard";
 import ShimmerUi from "./ShimmerUi";
 import { Link } from "react-router-dom";
 import { filteredData } from "../utils/Helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/userContext";
 const Body = () => {
-  //
+
   const [allRestaurent, setAllRestaurent] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const { user, setUser } = useContext(UserContext)
 
   //empty dependency array => once affter render
   // dependency array [searchText] => once after render + everyTime after render (my searchtext changes)
@@ -45,6 +47,7 @@ const Body = () => {
             setSearchText(e.target.value);
           }}
         />
+
         <button
           className="p-2 m-2 bg-purple-900 hover:bg-gray-500 text-white rounded-md"
           onClick={() => {
@@ -55,6 +58,15 @@ const Body = () => {
         >
           Search
         </button>
+        <input value={user.name} onChange={(e) => setUser({
+          ...user,
+          name: e.target.value,
+        })}></input>
+        {" "}
+        <input value={user.email} onChange={(e) => setUser({
+          ...user,
+          email: e.target.value,
+        })}></input>
       </div>
       <div className="flex flex-wrap">
         {filteredRestaurants.length === 0 ? (

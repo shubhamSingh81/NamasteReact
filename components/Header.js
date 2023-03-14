@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/userContext";
 
 const Title = () => (
   <a href="/">
@@ -13,6 +14,7 @@ const Title = () => (
 
 const Header = () => {
   const [isLogedIn, setIsLogedIn] = useState(true);
+  const {user} = useContext(UserContext); 
 
   return (
     <div className="flex justify-between bg-pink-50 shadow-lg">
@@ -30,11 +32,12 @@ const Header = () => {
           <li className="px-2"><Link to={"/instaMart"}>InstaMart</Link></li>
         </ul>
       </div>
-      <h1 className="py-2">{isLogedIn ? (
-        <button onClick={() => setIsLogedIn(false)}>LogOut</button>
+    <span className="p-10 font-bold text-red-900"> {user.name}</span> 
+      <span className="py-2">{isLogedIn ? ( 
+        <button onClick={() => setIsLogedIn(false)}>LogOut</button> 
       ) : (
         <button onClick={() => setIsLogedIn(true)}>LogedIn</button>
-      )}</h1>
+      )}</span>
 
     </div>
   );

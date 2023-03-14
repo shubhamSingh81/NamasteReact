@@ -94,4 +94,11 @@ cons of tailwind -> so much classname
                    - 
 
 
+state and props : 
+            state is a local variabel
+            props is a value passed b/w one component two another.
 
+// how can we pass data from child to parent
+Ans : - one way is we can build our custom hooks
+      - 
+//useContext is a way we can pass data from anywhere. 

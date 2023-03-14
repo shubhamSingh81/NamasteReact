@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react"; // core package
+import React, { lazy, Suspense, useState } from "react"; // core package
 import ReactDOM from "react-dom/client"; // packege which is importing dom
 // Default Import
 import Header from "../components/Header";
@@ -11,18 +11,28 @@ import RestauRentMenu from "../components/RestaurentMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Cart from "../components/Cart";
 import ShimmerUi from "../components/ShimmerUi";
+import UserContext from "../utils/userContext";
 
 const InstaMart = lazy(() => import("../components/InstaMart")); // onDemand Loading / lazy loading
 
-const About =  lazy(() => import("../components/About"))
+const About = lazy(() => import("../components/About"))
 
 const AppLayOut = () => {
+  const [user, setUser] = useState({
+    name: "shubham Singh",
+    email: "shubhmasingh8199@gmail.com"
+  })
+
   return (
-    <>
+    <UserContext.Provider
+      value={{
+        user: user,
+        setUser:setUser
+      }}>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </UserContext.Provider>
   );
 };
 
@@ -40,7 +50,7 @@ const appRouter = createBrowserRouter([
         path: "/about",
         element: <Suspense fallback={<h1>Loading...</h1>}>
           <About />
-        </Suspense> ,
+        </Suspense>,
         children: [
           {
             path: "profile", // parentPath/{path} => localhost:1234/about/profile
@@ -62,8 +72,8 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/instaMart",
-        element: <Suspense fallback={<ShimmerUi />}> 
-        <InstaMart />
+        element: <Suspense fallback={<ShimmerUi />}>
+          <InstaMart />
         </Suspense>,
       },
 
