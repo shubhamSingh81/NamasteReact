@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/userContext";
+import { useSelector } from 'react-redux'
 
 const Title = () => (
   <a href="/">
@@ -14,7 +15,10 @@ const Title = () => (
 
 const Header = () => {
   const [isLogedIn, setIsLogedIn] = useState(true);
-  const {user} = useContext(UserContext); 
+
+  const { user } = useContext(UserContext);
+
+  const cartItems = useSelector(store => store.cart.items);
 
   return (
     <div className="flex justify-between bg-pink-50 shadow-lg">
@@ -28,13 +32,14 @@ const Header = () => {
             <Link to={"/about"}> About </Link>
           </li>
           <li className="px-2"> <Link to={"/contact"}> Contact </Link></li>
-          <li className="px-2"><Link to={"/cart"}>Cart</Link></li>
           <li className="px-2"><Link to={"/instaMart"}>InstaMart</Link></li>
+          <li className="px-2"><Link to={"/cart"}>Cart - {cartItems.length} items</Link></li>
+
         </ul>
       </div>
-    <span className="p-10 font-bold text-red-900"> {user.name}</span> 
-      <span className="py-2">{isLogedIn ? ( 
-        <button onClick={() => setIsLogedIn(false)}>LogOut</button> 
+      <span className="p-10 font-bold text-red-900"> {user.name}</span>
+      <span className="py-2">{isLogedIn ? (
+        <button onClick={() => setIsLogedIn(false)}>LogOut</button>
       ) : (
         <button onClick={() => setIsLogedIn(true)}>LogedIn</button>
       )}</span>

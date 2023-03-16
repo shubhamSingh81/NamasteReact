@@ -101,4 +101,40 @@ state and props :
 // how can we pass data from child to parent
 Ans : - one way is we can build our custom hooks
       - 
-//useContext is a way we can pass data from anywhere. 
+//useContext is a way we can pass data from anywhere.
+// why do we use useContext -> for aviod prod drilling.
+
+ // reducer is modified slice of store.
+ // selector : selctor is a hooks(useSelector);
+
+ How to write inside redux store => // +(if you click on plus button we ) dispatches(action) -> which call the reducer function which updates the slices of redux store.
+
+ +(button) => dispatch action =>recucer function => update the redux store
+
+ // useSelctor is known as subscribing our store.
+
+ /*
+Create Store -:
+           - configureStore() - RTK(Redux tool kit)
+           - Provide my store to app
+                   - <Provider store = {store}> - import from react-redux
+           - slice  
+                   -RTK - createSlice({
+                    name:"",
+                    initialState:
+                    reducers:{
+                        addItem:(state,action) => {
+                            state =     action.payload
+                        }
+                    }
+                   })
+            export const {addItem,removeItem} = cartSlice.actions
+            export default cartSlice.reducer;
+
+    put the slice in to store.
+    - {
+        reducer : {store}
+    }
+ */
+
+// What is useSelector is used for -> its used for too subscribed the store.
